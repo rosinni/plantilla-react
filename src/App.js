@@ -1,26 +1,31 @@
-// import logo from './logo.svg';
-// import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Home from "./views/Home"
+import Demo from "./views/Demo"
+import Details from "./views/Details"
 
-//azucar sintactico: JSX => JS + HTML/XML
 
 function App() {
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-         hOLA A TODAS
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Navbar/>
+      <Switch>
+          <Route exact path="/">
+            <Home/>
+          </Route>
+          <Route exact path="/demo">
+            <Demo/>
+          </Route>
+          <Route exact path="/demo/:id">
+            <Details/>
+          </Route>
+          <Route to="*">
+            <h2>Not found - 404</h2>
+          </Route>
+      </Switch>
+    </Router>
   );
 }
 
